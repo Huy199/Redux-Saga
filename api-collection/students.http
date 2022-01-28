@@ -31,11 +31,8 @@ PATCH {{baseUrl}}/students/sktwi1cgkkuif36f3
 Content-Type: application/json
 
 {
-    "name": "Michale Testttt",
-    "age": 27,
-    "mark": 9,
-    "gender": "male",
-    "city": "pt"
+  "name": "Callie Christiansen"
+ 
 }
 
 ### 
