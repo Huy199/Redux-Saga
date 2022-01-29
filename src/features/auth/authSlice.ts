@@ -29,7 +29,7 @@ const authSlice = createSlice({
       state.logging = false;
       state.currentUser = action.payload;
     },
-    loginFailed(state, action: PayloadAction) {
+    loginFailed(state) {
       state.logging = false;
     },
     logout(state) {
