@@ -29,7 +29,6 @@ export default function LoginPage() {
   };
   return (
     <div className={classes.root}>
-      <Button onClick={() => dispatch(authAction.logout())}>Logout</Button>
       <Paper elevation={1} className={classes.box}>
         <Typography variant="h5" component="h1">
           Student Management
