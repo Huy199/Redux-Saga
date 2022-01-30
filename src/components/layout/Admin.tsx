@@ -1,18 +1,41 @@
-import { Button } from '@material-ui/core';
-import { authAction } from 'features/auth/authSlice';
+import { Box, makeStyles } from '@material-ui/core';
+import { Header, Sidebar } from 'components/common';
 import * as React from 'react';
-import { useAppDispatch } from '../../app/hooks';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'grid',
+    gridTemplateRows: 'auto 1fr',
+    gridTemplateColumns: '240px 1fr',
+    gridTemplateAreas: '"header header" "sidebar main"',
 
-export interface AdminLayoutProps {}
-
-export function AdminLayout(props: AdminLayoutProps) {
-  const dispatch = useAppDispatch();
+    minHeight: '100vh',
+  },
+  header: {
+    gridArea: 'header',
+    backgroundColor: theme.palette.background.paper,
+  },
+  sidebar: {
+    gridArea: 'sidebar',
+    borderRight: `1px solid ${theme.palette.divider}`,
+    backgroundColor: theme.palette.background.paper,
+  },
+  main: {
+    gridArea: 'main',
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2, 3),
+  },
+}));
+export function AdminLayout() {
+  const classes = useStyles();
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={() => dispatch(authAction.logout())}>
-        Logout
-      </Button>
-      AdminLayout
-    </div>
+    <Box className={classes.root}>
+      <Box className={classes.header}>
+        <Header />
+      </Box>
+      <Box className={classes.sidebar}>
+        <Sidebar />
+      </Box>
+      <Box className={classes.main}>MAIN</Box>
+    </Box>
   );
 }
