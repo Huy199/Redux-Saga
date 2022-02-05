@@ -15,7 +15,7 @@ function* handleleLogin(payload: LoginPayload) {
       })
     );
 
-    yield put(push('/admin'));
+    yield put(push('/admin/dashboard'));
   } catch (error) {
     yield put(authAction.loginFailed());
   }
