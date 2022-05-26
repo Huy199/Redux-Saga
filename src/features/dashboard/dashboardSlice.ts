@@ -40,10 +40,10 @@ const dashboardSlice = createSlice({
       state.loading = true;
     },
     fetchDataSuccess(state) {
-      state.loading = true;
+      state.loading = false;
     },
     fetchDataFailed(state) {
-      state.loading = true;
+      state.loading = false;
     },
     setStatics(state, action: PayloadAction<DashboardStatistics>) {
       state.statistics = action.payload;

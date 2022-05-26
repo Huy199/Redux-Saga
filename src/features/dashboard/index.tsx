@@ -7,10 +7,13 @@ import { dashboardActions, selectDashboardLoading, selectDashboardStatistics, se
 
 const useStyles = makeStyles(theme => ({
   root: {
-    position: 'relative'
+    position: 'relative',
+    paddingTop: theme.spacing(1)
   },
   loading: {
     position: 'absolute',
+    paddingTop: theme.spacing(-1),
+    width: '100%'
   },
 }))
 export default function Dashboard() {
@@ -38,7 +41,7 @@ export default function Dashboard() {
   return (
     <Box className={classes.root}>
       {/* Loading */}
-      {loading && <LinearProgress />}
+      {loading && <LinearProgress className={classes.loading} />}
       <Grid container spacing={3}>
         <Grid item xs={12} md={6} lg={3}>
           <StatisticItem
