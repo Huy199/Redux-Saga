@@ -8,18 +8,18 @@ export interface DashboardStatistics {
   highMarkCount: number;
   lowMarkCount: number;
 }
-export interface RankingByCityList {
-  id: number;
-  student: Student[];
+export interface RankingByCity {
+  cityId: string;
+  rankingList: Student[];
 }
-export interface Dashboard {
+export interface DashboardState {
   loading: boolean;
   statistics: DashboardStatistics;
   highestStudentList: Student[];
   lowestStudentList: Student[];
-  rankingByCityList: RankingByCityList[];
+  rankingByCityList: RankingByCity[];
 }
-const initialState: Dashboard = {
+const initialState: DashboardState = {
   loading: false,
   statistics: {
     maleCount: 0,
@@ -54,14 +54,14 @@ const dashboardSlice = createSlice({
     setLowestStudentList(state, action: PayloadAction<Student[]>) {
       state.lowestStudentList = action.payload;
     },
-    setRankingByCityList(state, action: PayloadAction<RankingByCityList[]>) {
+    setRankingByCityList(state, action: PayloadAction<RankingByCity[]>) {
       state.rankingByCityList = action.payload;
     },
   },
 });
 
 //Actions
-export const dashboardAction = dashboardSlice.actions;
+export const dashboardActions = dashboardSlice.actions;
 //Selector
 export const selectDashboardLoading = (state: RootState) => state.dashboard.loading;
 export const selectDashboardStatistics = (state: RootState) => state.dashboard.statistics;
