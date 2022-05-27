@@ -69,7 +69,6 @@ function* fetchRankingByCityList() {
 
     // Update state
     yield put(dashboardActions.setRankingByCityList(rankingByCityList));
-    debugger
 }
 
 function* fetchDashboardData() {
