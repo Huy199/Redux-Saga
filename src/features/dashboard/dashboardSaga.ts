@@ -59,13 +59,17 @@ function* fetchRankingByCityList() {
             city: x.code,
         })
     );
+
     const responseList: Array<ListResponse<Student>> = yield all(callList);
     const rankingByCityList: Array<RankingByCity> = responseList.map((x, idx) => ({
         cityId: cityList[idx].code,
+        cityName: cityList[idx].name,
         rankingList: x.data,
     }));
+
     // Update state
     yield put(dashboardActions.setRankingByCityList(rankingByCityList));
+    debugger
 }
 
 function* fetchDashboardData() {
