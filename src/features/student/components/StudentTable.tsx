@@ -42,7 +42,7 @@ export default function StudentTable({ studentList, onEdit, onRemove }: StudentT
                             <TableCell>{student.mark}</TableCell>
                             <TableCell>{student.city}</TableCell>
                             <TableCell align="right">
-                                <Button className={classes.eidt} variant="contained" color="primary" onClick={() => onEdit?.(student)}>Edit</Button>
+                                <Button size='small' className={classes.eidt} color="primary" onClick={() => onEdit?.(student)}>Edit</Button>
                                 <Button variant="contained" color="secondary" onClick={() => onRemove?.(student)}>Remove</Button>
                             </TableCell>
                         </TableRow>
