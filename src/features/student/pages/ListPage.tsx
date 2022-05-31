@@ -7,7 +7,8 @@ import { selectStudentFilter, selectStudentList, selectStudentLoading, selectStu
 import { Pagination } from '@material-ui/lab';
 import { selectCityList, selectCityMap } from 'features/city/citySlice';
 import StudentFilter from '../components/StudentFilter';
-import { ListParams } from 'models';
+import { ListParams, Student } from 'models';
+import studentApi from 'api/studentApi';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -56,6 +57,18 @@ export default function ListPage() {
         dispatch(studentActions.setFilter(newFilter))
     }
 
+    const handleRemoveStudent = async (student: Student) => {
+        try {
+            await studentApi.remove(student?.id || '')
+            // Trigger to re-fetch student list witch curent filter
+            const newFilter = { ...filter }
+            dispatch(studentActions.setFilter(newFilter))
+
+        } catch (error) {
+            console.log('Failed to remove student', error)
+        }
+    }
+
     return (
         <Box className={classes.root}>
 
@@ -76,7 +89,7 @@ export default function ListPage() {
 
             {/* Student Table */}
 
-            <StudentTable studentList={studentList} cityMap={cityMap} />
+            <StudentTable studentList={studentList} cityMap={cityMap} onRemove={handleRemoveStudent} />
             {/* Pagination */}
             <Box mt={2} display='flex' justifyContent='center'>
 
