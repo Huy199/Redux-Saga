@@ -9,7 +9,7 @@ import { selectCityList, selectCityMap } from 'features/city/citySlice';
 import StudentFilter from '../components/StudentFilter';
 import { ListParams, Student } from 'models';
 import studentApi from 'api/studentApi';
-
+import { Link, useRouteMatch, useHistory } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
     root: {
         position: 'relative',
@@ -30,6 +30,8 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 export default function ListPage() {
+    const match = useRouteMatch();
+    const history = useHistory();
     const studentList = useAppSelector(selectStudentList);
     const pagination = useAppSelector(selectStudentPagination);
     const cityMap = useAppSelector(selectCityMap);
@@ -69,13 +71,19 @@ export default function ListPage() {
         }
     }
 
+    const handleEditStudent = async (student: Student) => {
+        history.push(`${match.url}/${student.id}`)
+    }
+
     return (
         <Box className={classes.root}>
 
             {loading && <LinearProgress className={classes.loading} />}
             <Box className={classes.titleContainer}>
                 <Typography variant="h4">Student Management</Typography>
-                <Button variant="contained" color="primary">Add new student</Button>
+                <Link to={`${match.url}/add`} style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="primary">Add new student</Button>
+                </Link>
             </Box>
             <Box mb={3}>
                 {/* Filter */}
@@ -89,7 +97,7 @@ export default function ListPage() {
 
             {/* Student Table */}
 
-            <StudentTable studentList={studentList} cityMap={cityMap} onRemove={handleRemoveStudent} />
+            <StudentTable studentList={studentList} cityMap={cityMap} onEdit={handleEditStudent} onRemove={handleRemoveStudent} />
             {/* Pagination */}
             <Box mt={2} display='flex' justifyContent='center'>
 
