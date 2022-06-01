@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Grid, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select } from "@material-ui/core";
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, OutlinedInput, Select } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { City, ListParams } from "models";
 import React, { ChangeEvent, useRef } from "react";
