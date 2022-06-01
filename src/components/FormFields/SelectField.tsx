@@ -38,9 +38,6 @@ export default function SelectField({ name, control, label, disabled, options }:
                 onBlur={onBlur}
                 label={label}
             >
-                <MenuItem value="">
-                    <em>All city</em>
-                </MenuItem>
                 {options.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                         {option.label}

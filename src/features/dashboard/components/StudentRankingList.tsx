@@ -16,7 +16,7 @@ export interface StudenRankingtListProps {
 export default function StudenRankingtList({ studentList }: StudenRankingtListProps) {
     const classes = useStyles();
     return (
-        <TableContainer >
+        <TableContainer>
             <Table className={classes.table} size='small' aria-label="simple table">
                 <TableHead>
                     <TableRow>

@@ -8,9 +8,11 @@ import { ChevronLeft } from '@material-ui/icons';
 import { Student } from 'models';
 import studentApi from 'api/studentApi';
 import StudentForm from '../components/StudentForm';
+import { toast } from 'react-toastify';
 
 
 export default function AddStudentList() {
+    const history = useHistory();
     const { studentId } = useParams<{ studentId: string }>();
     const [student, setStudent] = useState<Student>();
     const dispatch = useAppDispatch();
@@ -29,8 +31,16 @@ export default function AddStudentList() {
         })();
     }, [studentId])
 
-    const handleStudentFormSubmit = (formValues: Student) => {
-        ///
+    const handleStudentFormSubmit = async (formValues: Student) => {
+        if (isEdit) {
+            await studentApi.update(formValues);
+        } else {
+            await studentApi.add(formValues);
+
+        }
+        // Toast success
+        toast.success('Save student successfully')
+        history.push('/admin/students')
     }
 
     const initialValues: Student = {

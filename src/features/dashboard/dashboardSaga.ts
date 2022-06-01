@@ -6,7 +6,6 @@ import { dashboardActions, RankingByCity } from "./dashboardSlice";
 
 function* fetchStatistics() {
 
-    console.log('123')
     const responList: Array<ListResponse<Student>> = yield all([
         call(studentApi.getAll, { _page: 1, _limit: 1, gender: 'male' }),
         call(studentApi.getAll, { _page: 1, _limit: 1, gender: 'female' }),
